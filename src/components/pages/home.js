@@ -10,9 +10,19 @@ import {
   NotificationManager,
 } from "react-notifications";
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`);
-};
+const Add = async (name) => {
+    const result = await axios.post("", {
+      name: name
+    });
+  
+    if (result.status == 200) {
+      NotificationManager.success("Succesfully");
+      setTimeout(() => {}, 20000);
+      window.location = "";
+    } else {
+      NotificationManager.error("Unsuccesfully");
+    }
+  };
 
 const NewGass = () => {
   return (
@@ -27,7 +37,7 @@ const NewGass = () => {
         }}
       >
         <Card.Body>
-          <Card.Title style={{ marginLeft: "11rem" }}>Add</Card.Title>
+          <Card.Title style={{ marginLeft: "6rem" }} className="text-xl ">New Greenhouse Gas Emission</Card.Title>
 
           <div className="my-6 mx-9">
             <Input
